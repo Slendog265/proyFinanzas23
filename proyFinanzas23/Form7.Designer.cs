@@ -37,14 +37,6 @@
             perAD = new DataGridViewTextBoxColumn();
             perAA = new DataGridViewTextBoxColumn();
             perAB = new DataGridViewTextBoxColumn();
-            dataGridView2 = new DataGridView();
-            PyC = new DataGridViewTextBoxColumn();
-            VAAP = new DataGridViewTextBoxColumn();
-            VABP = new DataGridViewTextBoxColumn();
-            perAP = new DataGridViewTextBoxColumn();
-            ADP = new DataGridViewTextBoxColumn();
-            perADP = new DataGridViewTextBoxColumn();
-            perBP = new DataGridViewTextBoxColumn();
             acc = new Label();
             accountBox = new TextBox();
             label1 = new Label();
@@ -59,9 +51,8 @@
             TotbBox = new TextBox();
             button3 = new Button();
             button5 = new Button();
-            button4 = new Button();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // Back
@@ -81,12 +72,12 @@
             dataGridView1.Location = new Point(2, 130);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(745, 252);
+            dataGridView1.Size = new Size(745, 492);
             dataGridView1.TabIndex = 1;
             // 
             // Act
             // 
-            Act.HeaderText = "Activos";
+            Act.HeaderText = "Cuentas";
             Act.Name = "Act";
             // 
             // VAA
@@ -118,51 +109,6 @@
             // 
             perAB.HeaderText = "%";
             perAB.Name = "perAB";
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { PyC, VAAP, VABP, perAP, ADP, perADP, perBP });
-            dataGridView2.Location = new Point(4, 388);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(743, 252);
-            dataGridView2.TabIndex = 2;
-            // 
-            // PyC
-            // 
-            PyC.HeaderText = "Pasivos y Capital";
-            PyC.Name = "PyC";
-            // 
-            // VAAP
-            // 
-            VAAP.HeaderText = "Valor Año Analisis";
-            VAAP.Name = "VAAP";
-            // 
-            // VABP
-            // 
-            VABP.HeaderText = "Valor Año Base";
-            VABP.Name = "VABP";
-            // 
-            // perAP
-            // 
-            perAP.HeaderText = "%";
-            perAP.Name = "perAP";
-            // 
-            // ADP
-            // 
-            ADP.HeaderText = "Aumento Disminución";
-            ADP.Name = "ADP";
-            // 
-            // perADP
-            // 
-            perADP.HeaderText = "AD %";
-            perADP.Name = "perADP";
-            // 
-            // perBP
-            // 
-            perBP.HeaderText = "%";
-            perBP.Name = "perBP";
             // 
             // acc
             // 
@@ -276,7 +222,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(776, 617);
+            button5.Location = new Point(763, 188);
             button5.Name = "button5";
             button5.Size = new Size(125, 23);
             button5.TabIndex = 19;
@@ -284,22 +230,22 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
-            // button4
+            // button6
             // 
-            button4.Location = new Point(776, 388);
-            button4.Name = "button4";
-            button4.Size = new Size(93, 23);
-            button4.TabIndex = 20;
-            button4.Text = "Borrar";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            button6.Location = new Point(776, 159);
+            button6.Name = "button6";
+            button6.Size = new Size(93, 23);
+            button6.TabIndex = 21;
+            button6.Text = "Guardar";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // resgiBG
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(926, 656);
-            Controls.Add(button4);
+            Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button3);
             Controls.Add(TotbBox);
@@ -314,7 +260,6 @@
             Controls.Add(label1);
             Controls.Add(accountBox);
             Controls.Add(acc);
-            Controls.Add(dataGridView2);
             Controls.Add(dataGridView1);
             Controls.Add(Back);
             MaximizeBox = false;
@@ -322,7 +267,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Registro BG";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -331,7 +275,6 @@
 
         private Button Back;
         private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
         private Label acc;
         private TextBox accountBox;
         private Label label1;
@@ -340,6 +283,13 @@
         private Label label2;
         private Button button1;
         private Button button2;
+        private TextBox TotABox;
+        private Label label3;
+        private Label label4;
+        private TextBox TotbBox;
+        private Button button3;
+        private Button button5;
+        private Button button6;
         private DataGridViewTextBoxColumn Act;
         private DataGridViewTextBoxColumn VAA;
         private DataGridViewTextBoxColumn VAB;
@@ -347,19 +297,5 @@
         private DataGridViewTextBoxColumn perAD;
         private DataGridViewTextBoxColumn perAA;
         private DataGridViewTextBoxColumn perAB;
-        private DataGridViewTextBoxColumn PyC;
-        private DataGridViewTextBoxColumn VAAP;
-        private DataGridViewTextBoxColumn VABP;
-        private DataGridViewTextBoxColumn perAP;
-        private DataGridViewTextBoxColumn ADP;
-        private DataGridViewTextBoxColumn perADP;
-        private DataGridViewTextBoxColumn perBP;
-        private TextBox TotABox;
-        private Label label3;
-        private Label label4;
-        private TextBox TotbBox;
-        private Button button3;
-        private Button button5;
-        private Button button4;
     }
 }

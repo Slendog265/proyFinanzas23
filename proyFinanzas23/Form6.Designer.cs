@@ -50,6 +50,7 @@
             TvBBox = new TextBox();
             button5 = new Button();
             button3 = new Button();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)estadoResultado).BeginInit();
             SuspendLayout();
             // 
@@ -204,7 +205,7 @@
             button5.Name = "button5";
             button5.Size = new Size(125, 23);
             button5.TabIndex = 21;
-            button5.Text = "Borrar todo Activo";
+            button5.Text = "Borrar toda cuenta";
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
@@ -218,11 +219,22 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // button6
+            // 
+            button6.Location = new Point(789, 131);
+            button6.Name = "button6";
+            button6.Size = new Size(93, 23);
+            button6.TabIndex = 22;
+            button6.Text = "Guardar";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
             // addSave
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(961, 365);
+            Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button3);
             Controls.Add(TvBBox);
@@ -272,5 +284,6 @@
         private TextBox TvBBox;
         private Button button5;
         private Button button3;
+        private Button button6;
     }
 }

@@ -47,19 +47,10 @@
             label5 = new Label();
             button1 = new Button();
             button2 = new Button();
-            dataGridView2 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
             button7 = new Button();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // Back
@@ -79,7 +70,7 @@
             dataGridView1.Location = new Point(12, 176);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(543, 167);
+            dataGridView1.Size = new Size(543, 375);
             dataGridView1.TabIndex = 2;
             // 
             // account
@@ -207,44 +198,9 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5 });
-            dataGridView2.Location = new Point(12, 364);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(543, 167);
-            dataGridView2.TabIndex = 15;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Cuenta";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Valor Año Analisis";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "%";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Valor Año Base";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "%";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
             // button3
             // 
-            button3.Location = new Point(582, 176);
+            button3.Location = new Point(600, 209);
             button3.Name = "button3";
             button3.Size = new Size(93, 23);
             button3.TabIndex = 16;
@@ -252,39 +208,9 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
-            // button4
-            // 
-            button4.Location = new Point(582, 364);
-            button4.Name = "button4";
-            button4.Size = new Size(93, 23);
-            button4.TabIndex = 17;
-            button4.Text = "Borrar";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(572, 205);
-            button5.Name = "button5";
-            button5.Size = new Size(125, 23);
-            button5.TabIndex = 18;
-            button5.Text = "Borrar todo Activo";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
-            // 
-            // button6
-            // 
-            button6.Location = new Point(572, 393);
-            button6.Name = "button6";
-            button6.Size = new Size(125, 23);
-            button6.TabIndex = 19;
-            button6.Text = "Borrar todo Pasivo";
-            button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click;
-            // 
             // button7
             // 
-            button7.Location = new Point(572, 517);
+            button7.Location = new Point(582, 238);
             button7.Name = "button7";
             button7.Size = new Size(125, 23);
             button7.TabIndex = 20;
@@ -292,17 +218,24 @@
             button7.UseVisualStyleBackColor = true;
             button7.Click += button7_Click;
             // 
+            // button6
+            // 
+            button6.Location = new Point(600, 180);
+            button6.Name = "button6";
+            button6.Size = new Size(93, 23);
+            button6.TabIndex = 23;
+            button6.Text = "Guardar";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
             // BGV
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(723, 552);
-            Controls.Add(button7);
+            ClientSize = new Size(768, 552);
             Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(button7);
             Controls.Add(button3);
-            Controls.Add(dataGridView2);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label5);
@@ -322,7 +255,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BGV";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -348,16 +280,8 @@
         private Label label5;
         private Button button1;
         private Button button2;
-        private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
         private Button button7;
+        private Button button6;
     }
 }

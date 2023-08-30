@@ -61,24 +61,22 @@
             dataGridView3 = new DataGridView();
             Column5 = new DataGridViewTextBoxColumn();
             monAct = new DataGridViewTextBoxColumn();
-            dataGridView4 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            monPas = new DataGridViewTextBoxColumn();
+            pasCir = new DataGridViewTextBoxColumn();
+            moneyPC = new DataGridViewTextBoxColumn();
+            CNtra = new DataGridViewTextBoxColumn();
             button7 = new Button();
             button8 = new Button();
             button10 = new Button();
             button11 = new Button();
-            button12 = new Button();
-            dataGridView5 = new DataGridView();
-            Cnt = new DataGridViewTextBoxColumn();
             uaiiERBox = new TextBox();
             label6 = new Label();
             button9 = new Button();
+            button12 = new Button();
+            button13 = new Button();
+            button14 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView5).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -306,11 +304,11 @@
             // dataGridView3
             // 
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { Column5, monAct });
-            dataGridView3.Location = new Point(20, 464);
+            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { Column5, monAct, pasCir, moneyPC, CNtra });
+            dataGridView3.Location = new Point(18, 517);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.RowTemplate.Height = 25;
-            dataGridView3.Size = new Size(244, 118);
+            dataGridView3.Size = new Size(543, 220);
             dataGridView3.TabIndex = 22;
             // 
             // Column5
@@ -320,28 +318,23 @@
             // 
             // monAct
             // 
-            monAct.HeaderText = "$";
+            monAct.HeaderText = "Activo Circulante $";
             monAct.Name = "monAct";
             // 
-            // dataGridView4
+            // pasCir
             // 
-            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, monPas });
-            dataGridView4.Location = new Point(299, 464);
-            dataGridView4.Name = "dataGridView4";
-            dataGridView4.RowTemplate.Height = 25;
-            dataGridView4.Size = new Size(244, 118);
-            dataGridView4.TabIndex = 23;
+            pasCir.HeaderText = "Pasivo Circulante";
+            pasCir.Name = "pasCir";
             // 
-            // dataGridViewTextBoxColumn1
+            // moneyPC
             // 
-            dataGridViewTextBoxColumn1.HeaderText = "Pasivos Circulantes";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            moneyPC.HeaderText = "Pasivo Circulante $";
+            moneyPC.Name = "moneyPC";
             // 
-            // monPas
+            // CNtra
             // 
-            monPas.HeaderText = "$";
-            monPas.Name = "monPas";
+            CNtra.HeaderText = "Capital Neto de Trabajo";
+            CNtra.Name = "CNtra";
             // 
             // button7
             // 
@@ -375,38 +368,13 @@
             // 
             // button11
             // 
-            button11.Location = new Point(166, 588);
+            button11.Location = new Point(567, 714);
             button11.Name = "button11";
             button11.Size = new Size(98, 23);
             button11.TabIndex = 28;
             button11.Text = "Borrar Fila";
             button11.UseVisualStyleBackColor = true;
             button11.Click += button11_Click;
-            // 
-            // button12
-            // 
-            button12.Location = new Point(445, 588);
-            button12.Name = "button12";
-            button12.Size = new Size(98, 23);
-            button12.TabIndex = 29;
-            button12.Text = "Borrar Fila";
-            button12.UseVisualStyleBackColor = true;
-            button12.Click += button12_Click;
-            // 
-            // dataGridView5
-            // 
-            dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView5.Columns.AddRange(new DataGridViewColumn[] { Cnt });
-            dataGridView5.Location = new Point(549, 464);
-            dataGridView5.Name = "dataGridView5";
-            dataGridView5.RowTemplate.Height = 25;
-            dataGridView5.Size = new Size(144, 118);
-            dataGridView5.TabIndex = 30;
-            // 
-            // Cnt
-            // 
-            Cnt.HeaderText = "Capital Neto de Trabajo";
-            Cnt.Name = "Cnt";
             // 
             // uaiiERBox
             // 
@@ -434,21 +402,52 @@
             button9.UseVisualStyleBackColor = true;
             button9.Click += button9_Click_1;
             // 
+            // button12
+            // 
+            button12.Location = new Point(468, 432);
+            button12.Name = "button12";
+            button12.Size = new Size(93, 23);
+            button12.TabIndex = 34;
+            button12.Text = "Guardar";
+            button12.UseVisualStyleBackColor = true;
+            button12.Click += button12_Click;
+            // 
+            // button13
+            // 
+            button13.Location = new Point(1132, 432);
+            button13.Name = "button13";
+            button13.Size = new Size(93, 23);
+            button13.TabIndex = 35;
+            button13.Text = "Guardar";
+            button13.UseVisualStyleBackColor = true;
+            button13.Click += button13_Click;
+            // 
+            // button14
+            // 
+            button14.Location = new Point(567, 685);
+            button14.Name = "button14";
+            button14.Size = new Size(93, 23);
+            button14.TabIndex = 36;
+            button14.Text = "Guardar";
+            button14.UseVisualStyleBackColor = true;
+            button14.Click += button14_Click;
+            // 
             // BGOAp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1341, 614);
+            AutoScroll = true;
+            ClientSize = new Size(1341, 749);
+            Controls.Add(button14);
+            Controls.Add(button13);
+            Controls.Add(button12);
             Controls.Add(button9);
             Controls.Add(label6);
             Controls.Add(uaiiERBox);
-            Controls.Add(dataGridView5);
-            Controls.Add(button12);
             Controls.Add(button11);
             Controls.Add(button10);
             Controls.Add(button8);
             Controls.Add(button7);
-            Controls.Add(dataGridView4);
             Controls.Add(dataGridView3);
             Controls.Add(button6);
             Controls.Add(button5);
@@ -468,15 +467,13 @@
             Controls.Add(button3);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
-            MaximizeBox = false;
             Name = "BGOAp";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BGOAp";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView5).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -521,21 +518,21 @@
         private Button button5;
         private Button button6;
         private DataGridView dataGridView3;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn monAct;
-        private DataGridView dataGridView4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private Button button7;
         private Button button8;
-        private DataGridViewTextBoxColumn monPas;
         private Button button10;
         private Button button11;
-        private Button button12;
-        private DataGridView dataGridView5;
-        private DataGridViewTextBoxColumn Cnt;
         private TextBox uaiiERBox;
         private Label label6;
         private Button button9;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn monAct;
+        private DataGridViewTextBoxColumn pasCir;
+        private DataGridViewTextBoxColumn moneyPC;
+        private DataGridViewTextBoxColumn CNtra;
+        private Button button12;
+        private Button button13;
+        private Button button14;
     }
 }

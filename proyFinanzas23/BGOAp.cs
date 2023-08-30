@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Schema;
+using Microsoft.Office.Interop.Excel;
+using objExcel = Microsoft.Office.Interop.Excel;
+
 
 namespace proyFinanzas23
 {
+
     public partial class BGOAp : Form
     {
+        string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
         public BGOAp()
         {
             InitializeComponent();
@@ -171,11 +178,10 @@ namespace proyFinanzas23
             int S = dataGridView1.Rows.Add();
             int a = dataGridView2.Rows.Add();
             int c = dataGridView3.Rows.Add();
-            int d = dataGridView4.Rows.Add();
-            int f = dataGridView5.Rows.Add();
 
 
-            try 
+
+            try
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
@@ -206,7 +212,7 @@ namespace proyFinanzas23
 
                 //catch 
                 //{
-                MessageBox.Show("Los valores que trato de sumar estan incorrectos o son negativos");
+                //MessageBox.Show("Los valores que trato de sumar estan incorrectos o son negativos");
 
                 //}
 
@@ -252,17 +258,17 @@ namespace proyFinanzas23
                 dataGridView3.Rows[c].Cells[0].Value = "Total";
                 dataGridView3.Rows[c].Cells[1].Value = totAc;
 
-                foreach (DataGridViewRow row in dataGridView4.Rows)
+                foreach (DataGridViewRow row in dataGridView3.Rows)
                 {
-                    totPc += Convert.ToDecimal(row.Cells["monPas"].Value);
+                    totPc += Convert.ToDecimal(row.Cells["moneyPC"].Value);
                 }
-                dataGridView4.Rows[d].Cells[0].Value = "Total";
-                dataGridView4.Rows[d].Cells[1].Value = totPc;
+                dataGridView3.Rows[c].Cells[3].Value = totPc;
 
                 totcnt = Convert.ToDouble(totAc - totPc);
-                dataGridView5.Rows[f].Cells[0].Value = totcnt;
+                dataGridView3.Rows[c].Cells[4].Value = totcnt;
             }
-            catch {
+            catch
+            {
                 MessageBox.Show("Los valores que trato de sumar estan incorrectos o son negativos");
             }
 
@@ -291,11 +297,19 @@ namespace proyFinanzas23
 
         private void button6_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
-            dataGridView2.Rows.Clear();
-            dataGridView3.Rows.Clear();
-            dataGridView4.Rows.Clear();
-            dataGridView5.Rows.Clear();
+            DialogResult resultado = MessageBox.Show("Quieres borrar todos los datos de todas las tablas?","Cuidado"
+                ,MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes) {
+                dataGridView1.Rows.Clear();
+                dataGridView2.Rows.Clear();
+                dataGridView3.Rows.Clear();
+            }
+            else 
+            {
+                
+            }
+            
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -338,11 +352,11 @@ namespace proyFinanzas23
         private void button8_Click(object sender, EventArgs e)
         {
             double camb, valueaa, valueab;
-            int c = dataGridView4.Rows.Add();
+            int c = dataGridView3.Rows.Add();
             if (vaaBox.Text == "" && vabBox.Text == "")
             {
                 MessageBox.Show("El dato ingresado esta vacio o es incorrecto");
-                dataGridView4.Rows.RemoveAt(c);
+                dataGridView3.Rows.RemoveAt(c);
 
             }
             else
@@ -352,8 +366,8 @@ namespace proyFinanzas23
                     valueaa = double.Parse(vaaBox.Text);
                     valueab = double.Parse(vabBox.Text);
                     camb = valueaa - valueab;
-                    dataGridView4.Rows[c].Cells[0].Value = accountBox.Text;
-                    dataGridView4.Rows[c].Cells[1].Value = camb;
+                    dataGridView3.Rows[c].Cells[2].Value = accountBox.Text;
+                    dataGridView3.Rows[c].Cells[3].Value = camb;
 
                     accountBox.Clear();
                     vaaBox.Clear();
@@ -362,20 +376,12 @@ namespace proyFinanzas23
                 catch
                 {
                     MessageBox.Show("Escriba un valor numerico en las casillas Valor año analisis o base");
-                    dataGridView4.Rows.RemoveAt(c);
+                    dataGridView3.Rows.RemoveAt(c);
                 }
 
             }
         }
 
-        private void button9_Click(object sender, EventArgs e)
-        {
-            accountBox.Clear();
-            vaaBox.Clear();
-            vabBox.Clear();
-            totOriBox.Clear();
-            depreERBox.Clear();
-        }
 
         private void button10_Click(object sender, EventArgs e)
         {
@@ -418,25 +424,6 @@ namespace proyFinanzas23
             }
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-            if (dataGridView4.CurrentCell != null)
-            {
-                try
-                {
-                    int n = dataGridView4.CurrentCell.RowIndex;
-                    dataGridView4.Rows.RemoveAt(n);
-                }
-                catch
-                {
-                    MessageBox.Show("Seleccione un fila con datos que no sea la default");
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se selecciono nada para eliminar");
-            }
-        }
 
         private void button9_Click_1(object sender, EventArgs e)
         {
@@ -468,7 +455,7 @@ namespace proyFinanzas23
                     MessageBox.Show("Escriba un valor numerico que cumpla la formula");
                     dataGridView2.Rows.RemoveAt(n);
                 }
-                
+
             }
             else
             {
@@ -498,7 +485,7 @@ namespace proyFinanzas23
                         dataGridView2.Rows.RemoveAt(n);
 
                     }
-                    
+
 
                 }
                 else
@@ -507,7 +494,7 @@ namespace proyFinanzas23
                     {
                         try
                         {
-                            
+
                             dataGridView2.Rows[n].Cells[0].Value = "Flujo Operación";
 
                         }
@@ -516,7 +503,7 @@ namespace proyFinanzas23
                             MessageBox.Show("Escriba un valor numerico que cumpla la formula");
                             dataGridView2.Rows.RemoveAt(n);
                         }
-                        
+
                     }
                     else
                     {
@@ -524,6 +511,97 @@ namespace proyFinanzas23
                         dataGridView2.Rows.RemoveAt(n);
                     }
                 }
+
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            objExcel.Application objAplicacion = new objExcel.Application();
+            Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+            Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+            objAplicacion.Visible = true;
+
+            foreach (DataGridViewColumn columna in dataGridView1.Columns)
+            {
+                objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
+                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                {
+                    objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+
+                }
+            }
+
+
+            try
+            {
+                objLibro.SaveAs(ruta + "\\ClasificaciónOAp.xlsx");
+                objAplicacion.Quit();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            objExcel.Application objAplicacion = new objExcel.Application();
+            Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+            Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+            objAplicacion.Visible = true;
+
+            foreach (DataGridViewColumn columna in dataGridView2.Columns)
+            {
+                objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
+                foreach (DataGridViewRow fila in dataGridView2.Rows)
+                {
+                    objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+
+                }
+            }
+
+
+            try
+            {
+                objLibro.SaveAs(ruta + "\\AnalisisOApp.xlsx");
+                objAplicacion.Quit();
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            objExcel.Application objAplicacion = new objExcel.Application();
+            Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+            Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+            objAplicacion.Visible = true;
+
+            foreach (DataGridViewColumn columna in dataGridView3.Columns)
+            {
+                objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
+                foreach (DataGridViewRow fila in dataGridView3.Rows)
+                {
+                    objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+
+                }
+            }
+
+
+            try
+            {
+                objLibro.SaveAs(ruta + "\\CapitalNetoTrabajo.xlsx");
+                objAplicacion.Quit();
+            }
+            catch
+            {
 
             }
         }

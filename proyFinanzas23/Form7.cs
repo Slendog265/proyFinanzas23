@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using Microsoft.Office.Interop.Excel;
+using objExcel = Microsoft.Office.Interop.Excel;
 
 namespace proyFinanzas23
 {
     public partial class resgiBG : Form
     {
+        string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
         public resgiBG()
         {
             InitializeComponent();
@@ -29,16 +33,16 @@ namespace proyFinanzas23
         {
             double Valueaa, Valueab, ADA, perADa, peraa, perab, TVA, TVB;
             int S = dataGridView1.Rows.Add();
-            if (accountBox.Text == "" && vaaBox.Text == "" && vabBox.Text == "" 
-                && TotABox.Text == "" && TotbBox.Text == "") 
+            if (accountBox.Text == "" && vaaBox.Text == "" && vabBox.Text == ""
+                && TotABox.Text == "" && TotbBox.Text == "")
             {
                 MessageBox.Show("El dato ingresado esta vacio o es incorrecto");
                 dataGridView1.Rows.RemoveAt(S);
-                
+
             }
             else
             {
-                try 
+                try
                 {
                     Valueaa = double.Parse(vaaBox.Text);
                     Valueab = double.Parse((vabBox.Text));
@@ -68,7 +72,7 @@ namespace proyFinanzas23
                     TotABox.Clear();
                     TotbBox.Clear();
                 }
-                catch 
+                catch
                 {
                     MessageBox.Show("Escriba un valor numerico en las casillas Valor año analisis, base o totales");
                     dataGridView1.Rows.RemoveAt(S);
@@ -78,7 +82,7 @@ namespace proyFinanzas23
 
 
 
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -90,13 +94,13 @@ namespace proyFinanzas23
                     int n = dataGridView1.CurrentCell.RowIndex;
                     dataGridView1.Rows.RemoveAt(n);
                 }
-                catch 
+                catch
                 {
                     MessageBox.Show("Seleccione una fila con datos que no sea la default");
 
                 }
             }
-            else 
+            else
             {
                 MessageBox.Show("No se selecciono nada para eliminar");
 
@@ -107,24 +111,23 @@ namespace proyFinanzas23
         private void button5_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            dataGridView2.Rows.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             double Valueaa, Valueab, ADA, perADa, peraa, perab, TVA, TVB;
-            int T = dataGridView2.Rows.Add();
+            int T = dataGridView1.Rows.Add();
 
-            if (accountBox.Text == "" && vaaBox.Text == "" && vabBox.Text == "" 
-                && TotABox.Text == "" && TotbBox.Text == "") 
+            if (accountBox.Text == "" && vaaBox.Text == "" && vabBox.Text == ""
+                && TotABox.Text == "" && TotbBox.Text == "")
             {
 
                 MessageBox.Show("El dato ingresado esta vacio o es incorrecto");
-                dataGridView2.Rows.RemoveAt(T);
+                dataGridView1.Rows.RemoveAt(T);
             }
-            else 
-            { 
-                try 
+            else
+            {
+                try
                 {
                     Valueaa = double.Parse(vaaBox.Text);
                     Valueab = double.Parse((vabBox.Text));
@@ -140,13 +143,13 @@ namespace proyFinanzas23
 
 
 
-                    dataGridView2.Rows[T].Cells[0].Value = accountBox.Text;
-                    dataGridView2.Rows[T].Cells[1].Value = vaaBox.Text;
-                    dataGridView2.Rows[T].Cells[2].Value = vabBox.Text;
-                    dataGridView2.Rows[T].Cells[3].Value = ADA;
-                    dataGridView2.Rows[T].Cells[4].Value = perADa;
-                    dataGridView2.Rows[T].Cells[5].Value = peraa;
-                    dataGridView2.Rows[T].Cells[6].Value = perab;
+                    dataGridView1.Rows[T].Cells[0].Value = accountBox.Text;
+                    dataGridView1.Rows[T].Cells[1].Value = vaaBox.Text;
+                    dataGridView1.Rows[T].Cells[2].Value = vabBox.Text;
+                    dataGridView1.Rows[T].Cells[3].Value = ADA;
+                    dataGridView1.Rows[T].Cells[4].Value = perADa;
+                    dataGridView1.Rows[T].Cells[5].Value = peraa;
+                    dataGridView1.Rows[T].Cells[6].Value = perab;
 
                     accountBox.Clear();
                     vaaBox.Clear();
@@ -155,36 +158,49 @@ namespace proyFinanzas23
                     TotbBox.Clear();
 
                 }
-                catch 
+                catch
                 {
                     MessageBox.Show("Escriba un valor numerico en las casillas Valor año analisis, base o totales");
-                    dataGridView2.Rows.RemoveAt(T);
+                    dataGridView1.Rows.RemoveAt(T);
+                }
+            }
+
+
+        }
+
+       
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            objExcel.Application objAplicacion = new objExcel.Application();
+            Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+            Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+            objAplicacion.Visible = true;
+
+            foreach (DataGridViewColumn columna in dataGridView1.Columns)
+            {
+                objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
+                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                {
+                    objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+
                 }
             }
 
             
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if(dataGridView2.CurrentCell != null)
+            try
             {
-                try
-                {
-                    int n = dataGridView2.CurrentCell.RowIndex;
-                    dataGridView2.Rows.RemoveAt(n);
-                }
-                catch
-                {
-                    MessageBox.Show("Seleccione una fila con datos que no sea la default");
-
-                }
+                objLibro.SaveAs(ruta + "\\BalancegeneralHorizontal.xlsx");
+                objAplicacion.Quit();
             }
-            else
+            catch
             {
-                MessageBox.Show("No se selecciono nada para eliminar");
 
             }
+
+            /**objLi.SaveAs(ruta + "\\ProyectoExcel3.xlsx");
+            objAplicacion2.Quit();**/
         }
     }
 }

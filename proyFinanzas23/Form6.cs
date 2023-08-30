@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
+using objExcel = Microsoft.Office.Interop.Excel;
 
 namespace proyFinanzas23
 {
     public partial class addSave : System.Windows.Forms.Form
     {
+        string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
         public addSave()
         {
             InitializeComponent();
@@ -38,7 +43,7 @@ namespace proyFinanzas23
             }
             else
             {
-                try 
+                try
                 {
                     Valueaa = double.Parse(VAABox.Text);
                     Valueab = double.Parse((VABBox.Text));
@@ -68,21 +73,21 @@ namespace proyFinanzas23
                     TvaBox.Clear();
                     TvBBox.Clear();
                 }
-                catch 
+                catch
                 {
                     MessageBox.Show("Escriba un valor numerico en las casillas Valor año analisis, base o totales");
                     estadoResultado.Rows.RemoveAt(S);
                 }
-                
+
             }
-           
+
 
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(estadoResultado.CurrentCell != null) 
+            if (estadoResultado.CurrentCell != null)
             {
                 try
                 {
@@ -95,7 +100,7 @@ namespace proyFinanzas23
 
                 }
             }
-            else 
+            else
             {
                 MessageBox.Show("No se selecciono nada para eliminar");
 
@@ -107,6 +112,36 @@ namespace proyFinanzas23
         private void button5_Click(object sender, EventArgs e)
         {
             estadoResultado.Rows.Clear();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            objExcel.Application objAplicacion = new objExcel.Application();
+            Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+            Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+            objAplicacion.Visible = true;
+
+            foreach (DataGridViewColumn columna in estadoResultado.Columns)
+            {
+                objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
+                foreach (DataGridViewRow fila in estadoResultado.Rows)
+                {
+                    objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+
+                }
+            }
+
+
+            try
+            {
+                objLibro.SaveAs(ruta + "\\EstadoResultadoHorizontal.xlsx");
+                objAplicacion.Quit();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

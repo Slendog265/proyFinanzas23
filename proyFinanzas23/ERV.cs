@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
+using objExcel = Microsoft.Office.Interop.Excel;
+
 
 namespace proyFinanzas23
 {
     public partial class ERV : Form
     {
+        string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
         public ERV()
         {
             InitializeComponent();
@@ -30,18 +36,18 @@ namespace proyFinanzas23
             double Valueaa, Valueab, ADA, perADa, peraa, perab, TVA, TVB;
             int S = dataGridView1.Rows.Add();
 
-            if (accountBox.Text == "" && vaaBox.Text == "" && vabBox.Text == "" 
-                && tovaBox.Text == "" && tovbBox.Text == "") 
+            if (accountBox.Text == "" && vaaBox.Text == "" && vabBox.Text == ""
+                && tovaBox.Text == "" && tovbBox.Text == "")
             {
 
                 MessageBox.Show("El dato ingresado esta vacio o es incorrecto");
                 dataGridView1.Rows.RemoveAt(S);
 
             }
-            else 
+            else
             {
 
-                try 
+                try
                 {
                     Valueaa = double.Parse(vaaBox.Text);
                     Valueab = double.Parse((vabBox.Text));
@@ -66,7 +72,7 @@ namespace proyFinanzas23
                     tovaBox.Clear();
                     tovbBox.Clear();
                 }
-                catch 
+                catch
                 {
 
                     MessageBox.Show("Escriba un valor numerico en las casillas Valor año analisis, base o totales");
@@ -76,9 +82,9 @@ namespace proyFinanzas23
                 }
 
             }
-                
 
-            
+
+
 
         }
 
@@ -107,6 +113,36 @@ namespace proyFinanzas23
         private void button5_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            objExcel.Application objAplicacion = new objExcel.Application();
+            Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+            Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+            objAplicacion.Visible = true;
+
+            foreach (DataGridViewColumn columna in dataGridView1.Columns)
+            {
+                objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
+                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                {
+                    objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+
+                }
+            }
+
+
+            try
+            {
+                objLibro.SaveAs(ruta + "\\EstadoResultadoVertical.xlsx");
+                objAplicacion.Quit();
+            }
+            catch
+            {
+
+            }
         }
     }
 }
