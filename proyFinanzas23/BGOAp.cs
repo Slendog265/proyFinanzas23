@@ -297,18 +297,19 @@ namespace proyFinanzas23
 
         private void button6_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("Quieres borrar todos los datos de todas las tablas?","Cuidado"
-                ,MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if (resultado == DialogResult.Yes) {
+            DialogResult resultado = MessageBox.Show("Quieres borrar todos los datos de todas las tablas?", "Cuidado"
+                , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
                 dataGridView1.Rows.Clear();
                 dataGridView2.Rows.Clear();
                 dataGridView3.Rows.Clear();
             }
-            else 
+            else
             {
-                
+
             }
-            
+
 
         }
 

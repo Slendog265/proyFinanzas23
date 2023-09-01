@@ -24,9 +24,7 @@ namespace proyFinanzas23
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            mMenu menu = new mMenu();
-            menu.ShowDialog();
+
         }
 
         private void calc_Click(object sender, EventArgs e)
@@ -116,31 +114,38 @@ namespace proyFinanzas23
 
         private void button6_Click(object sender, EventArgs e)
         {
-            objExcel.Application objAplicacion = new objExcel.Application();
-            Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
-            Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
-
-            objAplicacion.Visible = true;
-
-            foreach (DataGridViewColumn columna in estadoResultado.Columns)
+            try
             {
-                objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
-                foreach (DataGridViewRow fila in estadoResultado.Rows)
+                objExcel.Application objAplicacion = new objExcel.Application();
+                Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+                Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+                objAplicacion.Visible = true;
+
+                foreach (DataGridViewColumn columna in estadoResultado.Columns)
                 {
-                    objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+                    objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
+                    foreach (DataGridViewRow fila in estadoResultado.Rows)
+                    {
+                        objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+
+                    }
+                }
+
+
+                try
+                {
+                    objLibro.SaveAs(ruta + "\\EstadoResultadoHorizontal.xlsx");
+                    objAplicacion.Quit();
+                }
+                catch
+                {
 
                 }
             }
-
-
-            try
-            {
-                objLibro.SaveAs(ruta + "\\EstadoResultadoHorizontal.xlsx");
-                objAplicacion.Quit();
-            }
             catch
             {
-
+                MessageBox.Show("No se pueden guardar datos vacios");
             }
         }
     }

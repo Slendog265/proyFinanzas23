@@ -9,9 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Microsoft.Office.Interop.Excel;
 using objExcel = Microsoft.Office.Interop.Excel;
-using System.Data.OleDb;
+
 
 
 namespace proyFinanzas23
@@ -27,9 +26,7 @@ namespace proyFinanzas23
 
         private void Back_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            MAnalisisV mAnalisisV = new MAnalisisV();
-            mAnalisisV.Show();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -169,31 +166,38 @@ namespace proyFinanzas23
 
         private void button6_Click(object sender, EventArgs e)
         {
-            objExcel.Application objAplicacion = new objExcel.Application();
-            Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
-            Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
-
-            objAplicacion.Visible = true;
-
-            foreach (DataGridViewColumn columna in dataGridView1.Columns)
+            try
             {
-                objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
-                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                objExcel.Application objAplicacion = new objExcel.Application();
+                Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+                Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+                objAplicacion.Visible = true;
+
+                foreach (DataGridViewColumn columna in dataGridView1.Columns)
                 {
-                    objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+                    objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
+                    foreach (DataGridViewRow fila in dataGridView1.Rows)
+                    {
+                        objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+
+                    }
+                }
+
+
+                try
+                {
+                    objLibro.SaveAs(ruta + "\\BalancegeneralVertical.xlsx");
+                    objAplicacion.Quit();
+                }
+                catch
+                {
 
                 }
             }
-
-
-            try
-            {
-                objLibro.SaveAs(ruta + "\\BalancegeneralVertical.xlsx");
-                objAplicacion.Quit();
-            }
             catch
             {
-
+                MessageBox.Show("No se pueden guardar datos vacios");
             }
         }
 

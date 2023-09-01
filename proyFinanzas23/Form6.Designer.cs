@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
             estadoResultado = new DataGridView();
             Cuent = new DataGridViewTextBoxColumn();
             VañoAna = new DataGridViewTextBoxColumn();
@@ -54,24 +53,16 @@
             ((System.ComponentModel.ISupportInitialize)estadoResultado).BeginInit();
             SuspendLayout();
             // 
-            // button1
-            // 
-            button1.Location = new Point(12, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(91, 28);
-            button1.TabIndex = 0;
-            button1.Text = "Volver";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // estadoResultado
             // 
+            estadoResultado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            estadoResultado.BackgroundColor = Color.FromArgb(0, 64, 64);
             estadoResultado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             estadoResultado.Columns.AddRange(new DataGridViewColumn[] { Cuent, VañoAna, VAñoBase, ADE, perAD, PAñoAn, PAñoBase });
-            estadoResultado.Location = new Point(12, 160);
+            estadoResultado.Location = new Point(12, 120);
             estadoResultado.Name = "estadoResultado";
             estadoResultado.RowTemplate.Height = 25;
-            estadoResultado.Size = new Size(744, 202);
+            estadoResultado.Size = new Size(1023, 480);
             estadoResultado.TabIndex = 1;
             // 
             // Cuent
@@ -111,21 +102,21 @@
             // 
             // accounBox
             // 
-            accounBox.Location = new Point(145, 27);
+            accounBox.Location = new Point(12, 91);
             accounBox.Name = "accounBox";
             accounBox.Size = new Size(100, 23);
             accounBox.TabIndex = 2;
             // 
             // VAABox
             // 
-            VAABox.Location = new Point(270, 27);
+            VAABox.Location = new Point(158, 91);
             VAABox.Name = "VAABox";
             VAABox.Size = new Size(100, 23);
             VAABox.TabIndex = 3;
             // 
             // VABBox
             // 
-            VABBox.Location = new Point(401, 27);
+            VABBox.Location = new Point(311, 91);
             VABBox.Name = "VABBox";
             VABBox.Size = new Size(100, 23);
             VABBox.TabIndex = 4;
@@ -133,7 +124,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(158, 9);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(12, 73);
             label1.Name = "label1";
             label1.Size = new Size(45, 15);
             label1.TabIndex = 10;
@@ -142,7 +134,8 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(270, 9);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(157, 73);
             label2.Name = "label2";
             label2.Size = new Size(101, 15);
             label2.TabIndex = 11;
@@ -151,7 +144,8 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(401, 9);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(311, 73);
             label3.Name = "label3";
             label3.Size = new Size(85, 15);
             label3.TabIndex = 12;
@@ -159,17 +153,21 @@
             // 
             // calc
             // 
-            calc.Location = new Point(145, 72);
+            calc.BackColor = Color.FromArgb(20, 20, 20);
+            calc.FlatAppearance.BorderColor = Color.Black;
+            calc.FlatStyle = FlatStyle.Flat;
+            calc.ForeColor = Color.White;
+            calc.Location = new Point(779, 91);
             calc.Name = "calc";
             calc.Size = new Size(75, 23);
             calc.TabIndex = 15;
             calc.Text = "Calcular";
-            calc.UseVisualStyleBackColor = true;
+            calc.UseVisualStyleBackColor = false;
             calc.Click += calc_Click;
             // 
             // TvaBox
             // 
-            TvaBox.Location = new Point(520, 27);
+            TvaBox.Location = new Point(474, 91);
             TvaBox.Name = "TvaBox";
             TvaBox.Size = new Size(100, 23);
             TvaBox.TabIndex = 16;
@@ -177,7 +175,8 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(520, 9);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(474, 73);
             label4.Name = "label4";
             label4.Size = new Size(112, 15);
             label4.TabIndex = 17;
@@ -186,7 +185,8 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(640, 9);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(622, 73);
             label5.Name = "label5";
             label5.Size = new Size(96, 15);
             label5.TabIndex = 18;
@@ -194,46 +194,59 @@
             // 
             // TvBBox
             // 
-            TvBBox.Location = new Point(640, 27);
+            TvBBox.Location = new Point(622, 91);
             TvBBox.Name = "TvBBox";
             TvBBox.Size = new Size(100, 23);
             TvBBox.TabIndex = 19;
             // 
             // button5
             // 
-            button5.Location = new Point(779, 189);
+            button5.BackColor = Color.FromArgb(20, 20, 20);
+            button5.FlatAppearance.BorderColor = Color.Black;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.ForeColor = Color.White;
+            button5.Location = new Point(910, 91);
             button5.Name = "button5";
             button5.Size = new Size(125, 23);
             button5.TabIndex = 21;
             button5.Text = "Borrar toda cuenta";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
             // button3
             // 
-            button3.Location = new Point(789, 160);
+            button3.BackColor = Color.FromArgb(20, 20, 20);
+            button3.FlatAppearance.BorderColor = Color.Black;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(942, 62);
             button3.Name = "button3";
             button3.Size = new Size(93, 23);
             button3.TabIndex = 20;
             button3.Text = "Borrar";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button6
             // 
-            button6.Location = new Point(789, 131);
+            button6.BackColor = Color.FromArgb(20, 20, 20);
+            button6.FlatAppearance.BorderColor = Color.Black;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.ForeColor = Color.White;
+            button6.Location = new Point(942, 33);
             button6.Name = "button6";
             button6.Size = new Size(93, 23);
             button6.TabIndex = 22;
             button6.Text = "Guardar";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
             // addSave
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(961, 365);
+            BackColor = Color.FromArgb(27, 25, 36);
+            ClientSize = new Size(1047, 602);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button3);
@@ -249,7 +262,6 @@
             Controls.Add(VAABox);
             Controls.Add(accounBox);
             Controls.Add(estadoResultado);
-            Controls.Add(button1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "addSave";
@@ -261,8 +273,6 @@
         }
 
         #endregion
-
-        private Button button1;
         private DataGridView estadoResultado;
         private TextBox accounBox;
         private TextBox VAABox;

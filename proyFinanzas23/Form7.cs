@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using Microsoft.Office.Interop.Excel;
-using objExcel = Microsoft.Office.Interop.Excel;
+using objExcel1 = Microsoft.Office.Interop.Excel;
 
 namespace proyFinanzas23
 {
@@ -24,9 +24,7 @@ namespace proyFinanzas23
 
         private void Back_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            mMenu bG = new mMenu();
-            bG.ShowDialog();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -168,39 +166,46 @@ namespace proyFinanzas23
 
         }
 
-       
+
 
         private void button6_Click(object sender, EventArgs e)
         {
-            objExcel.Application objAplicacion = new objExcel.Application();
-            Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
-            Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
-
-            objAplicacion.Visible = true;
-
-            foreach (DataGridViewColumn columna in dataGridView1.Columns)
-            {
-                objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
-                foreach (DataGridViewRow fila in dataGridView1.Rows)
-                {
-                    objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
-
-                }
-            }
-
-            
             try
             {
-                objLibro.SaveAs(ruta + "\\BalancegeneralHorizontal.xlsx");
-                objAplicacion.Quit();
+                objExcel1.Application objAplicacion = new objExcel1.Application();
+                Workbook objLibro = objAplicacion.Workbooks.Add(XlSheetType.xlWorksheet);
+                Worksheet objHoja = (Worksheet)objAplicacion.ActiveSheet;
+
+                objAplicacion.Visible = true;
+
+                foreach (DataGridViewColumn columna in dataGridView1.Columns)
+                {
+                    objHoja.Cells[1, columna.Index + 1] = columna.HeaderText;
+                    foreach (DataGridViewRow fila in dataGridView1.Rows)
+                    {
+                        objHoja.Cells[fila.Index + 2, columna.Index + 1] = fila.Cells[columna.Index].Value;
+
+                    }
+                }
+
+
+                try
+                {
+                    objLibro.SaveAs(ruta + "\\BalancegeneralHorizontal.xlsx");
+                    objAplicacion.Quit();
+                }
+                catch
+                {
+
+                }
+
+                /**objLi.SaveAs(ruta + "\\ProyectoExcel3.xlsx");
+                objAplicacion2.Quit();**/
             }
             catch
             {
-
+                MessageBox.Show("No se pueden guardar datos vacios");
             }
-
-            /**objLi.SaveAs(ruta + "\\ProyectoExcel3.xlsx");
-            objAplicacion2.Quit();**/
         }
     }
 }

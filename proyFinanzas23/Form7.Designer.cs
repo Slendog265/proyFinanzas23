@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Back = new Button();
             dataGridView1 = new DataGridView();
             Act = new DataGridViewTextBoxColumn();
             VAA = new DataGridViewTextBoxColumn();
@@ -55,24 +54,16 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // Back
-            // 
-            Back.Location = new Point(12, 12);
-            Back.Name = "Back";
-            Back.Size = new Size(80, 31);
-            Back.TabIndex = 0;
-            Back.Text = "Volver";
-            Back.UseVisualStyleBackColor = true;
-            Back.Click += Back_Click;
-            // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = Color.FromArgb(0, 64, 64);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Act, VAA, VAB, AumDis, perAD, perAA, perAB });
-            dataGridView1.Location = new Point(2, 130);
+            dataGridView1.Location = new Point(12, 120);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(745, 492);
+            dataGridView1.Size = new Size(1023, 480);
             dataGridView1.TabIndex = 1;
             // 
             // Act
@@ -113,7 +104,8 @@
             // acc
             // 
             acc.AutoSize = true;
-            acc.Location = new Point(125, 20);
+            acc.ForeColor = Color.White;
+            acc.Location = new Point(12, 66);
             acc.Name = "acc";
             acc.Size = new Size(45, 15);
             acc.TabIndex = 3;
@@ -121,7 +113,7 @@
             // 
             // accountBox
             // 
-            accountBox.Location = new Point(125, 38);
+            accountBox.Location = new Point(12, 91);
             accountBox.Name = "accountBox";
             accountBox.Size = new Size(100, 23);
             accountBox.TabIndex = 4;
@@ -129,7 +121,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(240, 20);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(169, 66);
             label1.Name = "label1";
             label1.Size = new Size(101, 15);
             label1.TabIndex = 5;
@@ -137,14 +130,14 @@
             // 
             // vaaBox
             // 
-            vaaBox.Location = new Point(241, 38);
+            vaaBox.Location = new Point(169, 91);
             vaaBox.Name = "vaaBox";
             vaaBox.Size = new Size(100, 23);
             vaaBox.TabIndex = 6;
             // 
             // vabBox
             // 
-            vabBox.Location = new Point(362, 38);
+            vabBox.Location = new Point(323, 91);
             vabBox.Name = "vabBox";
             vabBox.Size = new Size(100, 23);
             vabBox.TabIndex = 7;
@@ -152,7 +145,8 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(362, 20);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(323, 66);
             label2.Name = "label2";
             label2.Size = new Size(85, 15);
             label2.TabIndex = 8;
@@ -160,27 +154,35 @@
             // 
             // button1
             // 
-            button1.Location = new Point(125, 88);
+            button1.BackColor = Color.FromArgb(20, 20, 20);
+            button1.FlatAppearance.BorderColor = Color.Black;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(727, 62);
             button1.Name = "button1";
             button1.Size = new Size(100, 23);
             button1.TabIndex = 9;
             button1.Text = "Agregar Activo";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(241, 88);
+            button2.BackColor = Color.FromArgb(20, 20, 20);
+            button2.FlatAppearance.BorderColor = Color.Black;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(727, 91);
             button2.Name = "button2";
             button2.Size = new Size(100, 23);
             button2.TabIndex = 10;
             button2.Text = "Agregar Pasivo";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // TotABox
             // 
-            TotABox.Location = new Point(468, 38);
+            TotABox.Location = new Point(468, 91);
             TotABox.Name = "TotABox";
             TotABox.Size = new Size(100, 23);
             TotABox.TabIndex = 12;
@@ -188,7 +190,8 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(469, 5);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(469, 54);
             label3.Name = "label3";
             label3.Size = new Size(99, 30);
             label3.TabIndex = 13;
@@ -197,7 +200,8 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(584, 5);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(596, 55);
             label4.Name = "label4";
             label4.Size = new Size(102, 30);
             label4.TabIndex = 14;
@@ -205,46 +209,59 @@
             // 
             // TotbBox
             // 
-            TotbBox.Location = new Point(586, 38);
+            TotbBox.Location = new Point(596, 91);
             TotbBox.Name = "TotbBox";
             TotbBox.Size = new Size(100, 23);
             TotbBox.TabIndex = 15;
             // 
             // button3
             // 
-            button3.Location = new Point(776, 130);
+            button3.BackColor = Color.FromArgb(20, 20, 20);
+            button3.FlatAppearance.BorderColor = Color.Black;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(942, 61);
             button3.Name = "button3";
             button3.Size = new Size(93, 23);
             button3.TabIndex = 17;
             button3.Text = "Borrar";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button5
             // 
-            button5.Location = new Point(763, 188);
+            button5.BackColor = Color.FromArgb(20, 20, 20);
+            button5.FlatAppearance.BorderColor = Color.Black;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.ForeColor = Color.White;
+            button5.Location = new Point(910, 90);
             button5.Name = "button5";
             button5.Size = new Size(125, 23);
             button5.TabIndex = 19;
             button5.Text = "Borrar todo Activo";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
             // button6
             // 
-            button6.Location = new Point(776, 159);
+            button6.BackColor = Color.FromArgb(20, 20, 20);
+            button6.FlatAppearance.BorderColor = Color.Black;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.ForeColor = Color.White;
+            button6.Location = new Point(942, 32);
             button6.Name = "button6";
             button6.Size = new Size(93, 23);
             button6.TabIndex = 21;
             button6.Text = "Guardar";
-            button6.UseVisualStyleBackColor = true;
+            button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
             // resgiBG
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(926, 656);
+            BackColor = Color.FromArgb(27, 25, 36);
+            ClientSize = new Size(1047, 602);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button3);
@@ -261,7 +278,6 @@
             Controls.Add(accountBox);
             Controls.Add(acc);
             Controls.Add(dataGridView1);
-            Controls.Add(Back);
             MaximizeBox = false;
             Name = "resgiBG";
             StartPosition = FormStartPosition.CenterScreen;
@@ -272,8 +288,6 @@
         }
 
         #endregion
-
-        private Button Back;
         private DataGridView dataGridView1;
         private Label acc;
         private TextBox accountBox;
